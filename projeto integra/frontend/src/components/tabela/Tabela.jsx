@@ -7,6 +7,11 @@ const Tabela = (props) => {
     const [usuarios, setUsuarios] = useState(null);
     const [modalConfirmaExclusao, setModalConfirmaExclusao] = useState(false)
     const [id, setId] = useState(null)
+    const [nome, setNome] = useState(null)
+    const [email, setEmail] = useState(null)
+    const [genero, setGenero] = useState(null)
+    const [pais, setPais] = useState(null)
+    const [dataNascimento, setDataNascimento] = useState(null)
 
     useEffect(() => {
         const getUsuarios = async () => {
@@ -21,9 +26,11 @@ const Tabela = (props) => {
     }, [])
 
     const handleChildData = (opt, id) => {
-        setId(id)
-        setModalConfirmaExclusao(opt)
         props.handleChildData(opt, id)
+    }
+
+    const handleChildDataEdit = (opt, id, nome, email, genero, pais, dataNascimento) => {
+        props.handleChildDataEdit(opt, id, nome, email, genero, pais, dataNascimento)
     }
 
     return (
@@ -50,6 +57,7 @@ const Tabela = (props) => {
                                 dataNascimento={JSON.stringify(usuario.dataNascimento)}
                                 bgColor={cor}
                                 sendDataToParent={handleChildData}
+                                sendDataToParentEdit={handleChildDataEdit}
                             />
                         )
                     })}
