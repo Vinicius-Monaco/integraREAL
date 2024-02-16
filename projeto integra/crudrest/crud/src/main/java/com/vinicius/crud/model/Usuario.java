@@ -1,7 +1,5 @@
 package com.vinicius.crud.model;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,10 +16,19 @@ public class Usuario {
 
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private Genero genero;
+    private String genero;
 
     private String pais;
 
     private String observacoes;
+
+    private boolean maioridade;
+
+    public boolean getMaioridade() {
+        return maioridade;
+    }
+
+    public void setMaioridade(boolean maioridade) {
+        this.maioridade = maioridade;
+    }
 }

@@ -4,7 +4,26 @@ const S = {
         display: flex;
         flex-direction: column;
         align-items: center;
+    `,
+
+    CreateButton: styled.button`
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 60px;
+        width: 80px;
+        height: 80px;
+        background-color: green;
+        border-radius: 100%;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: .4s;
+        &:hover {
+            transform: scale(1.2);
+        }
     `
+    
 }
 
 export { S }

@@ -15,7 +15,8 @@ const Linha = (props) => {
       props.email,
       props.genero,
       props.pais,
-      props.observacoes
+      props.observacoes,
+      props.maioridade
     );
   };
 
@@ -27,6 +28,7 @@ const Linha = (props) => {
         <S.Td>{props.genero}</S.Td>
         <S.Td>{props.pais}</S.Td>
         <S.Td>{props.observacoes}</S.Td>
+        <S.Td>{props.maioridade ? "SIM" : "NÃO"}</S.Td>
         <S.Td align="center">
           <S.ButtonContainer>
             <S.Button

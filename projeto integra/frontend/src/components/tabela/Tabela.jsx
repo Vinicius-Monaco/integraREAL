@@ -12,6 +12,7 @@ const Tabela = (props) => {
   const [genero, setGenero] = useState(null);
   const [pais, setPais] = useState(null);
   const [observacoes, setObservacoes] = useState(null);
+  const [maioridade, setMaioridade] = useState(null);
 
   useEffect(() => {
     const getUsuarios = async () => {
@@ -36,9 +37,10 @@ const Tabela = (props) => {
     email,
     genero,
     pais,
-    observacoes
+    observacoes,
+    maioridade
   ) => {
-    props.handleChildDataEdit(opt, id, nome, email, genero, pais, observacoes);
+    props.handleChildDataEdit(opt, id, nome, email, genero, pais, observacoes, maioridade);
   };
 
   return (
@@ -50,6 +52,7 @@ const Tabela = (props) => {
           <S.Th>Gênero</S.Th>
           <S.Th>País</S.Th>
           <S.Th>Observações</S.Th>
+          <S.Th>Maioridade</S.Th>
           <S.Th>Ações</S.Th>
         </S.Thead>
         <tbody>
@@ -64,6 +67,7 @@ const Tabela = (props) => {
                   genero={JSON.stringify(usuario.genero)}
                   pais={JSON.stringify(usuario.pais)}
                   observacoes={JSON.stringify(usuario.observacoes)}
+                  maioridade={JSON.stringify(usuario.maioridade)}
                   bgColor={cor}
                   sendDataToParent={handleChildData}
                   sendDataToParentEdit={handleChildDataEdit}

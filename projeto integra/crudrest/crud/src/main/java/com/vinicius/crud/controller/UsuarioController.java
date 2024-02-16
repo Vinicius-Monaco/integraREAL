@@ -2,7 +2,6 @@ package com.vinicius.crud.controller;
 
 import org.springframework.web.bind.annotation.*;
 import com.vinicius.crud.config.Conexao;
-import com.vinicius.crud.model.Genero;
 import com.vinicius.crud.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -29,8 +28,9 @@ public class UsuarioController {
                 usuarioEncontrado.setId(rs.getLong("ID"));
                 usuarioEncontrado.setNome(rs.getString("NOME"));
                 usuarioEncontrado.setEmail(rs.getString("EMAIL"));
-                usuarioEncontrado.setGenero(Genero.valueOf(rs.getString("GENERO")));
+                usuarioEncontrado.setGenero(rs.getString("GENERO"));
                 usuarioEncontrado.setPais(rs.getString("PAIS"));
+                usuarioEncontrado.setMaioridade(rs.getBoolean("MAIORIDADE"));
                 usuarioEncontrado.setObservacoes(rs.getString("OBSERVACOES"));
                 usuarios.add(usuarioEncontrado);
             }
@@ -42,15 +42,16 @@ public class UsuarioController {
 
     @PutMapping("/EDIT/{id}")
     public ResponseEntity<String> editUsuario(@PathVariable Long id, @RequestBody Usuario usuario) {
-        String querySQL = "UPDATE USUARIO SET NOME=?, EMAIL=?, GENERO=?, PAIS=?, OBSERVACOES=? WHERE ID=?";
+        String querySQL = "UPDATE USUARIO SET NOME=?, EMAIL=?, GENERO=?, PAIS=?, OBSERVACOES=?, MAIORIDADE=? WHERE ID=?";
         try (Connection connection = conexao.getConexao();
                 PreparedStatement ps = connection.prepareStatement(querySQL)) {
             ps.setString(1, usuario.getNome());
             ps.setString(2, usuario.getEmail());
-            ps.setString(3, usuario.getGenero().name());
+            ps.setString(3, usuario.getGenero());
             ps.setString(4, usuario.getPais());
             ps.setString(5, usuario.getObservacoes());
-            ps.setLong(6, id);
+            ps.setBoolean(6, usuario.getMaioridade());
+            ps.setLong(7, id);
             int linhasAtualizadas = ps.executeUpdate();
             if (linhasAtualizadas > 0) {
                 return ResponseEntity.ok("SUCESSO");
@@ -85,14 +86,15 @@ public class UsuarioController {
 
     @PostMapping("/CREATE")
     public ResponseEntity<String> createUser(@RequestBody Usuario usuario) {
-        String querySQL = "INSERT INTO USUARIO (NOME, EMAIL, GENERO, PAIS, OBSERVACOES) VALUES (?, ?, ?, ?, ?)";
+        String querySQL = "INSERT INTO USUARIO (NOME, EMAIL, GENERO, PAIS, OBSERVACOES, MAIORIDADE) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection connection = conexao.getConexao();
                 PreparedStatement ps = connection.prepareStatement(querySQL)) {
             ps.setString(1, usuario.getNome());
             ps.setString(2, usuario.getEmail());
-            ps.setString(3, usuario.getGenero().name());
+            ps.setString(3, usuario.getGenero());
             ps.setString(4, usuario.getPais());
             ps.setString(5, usuario.getObservacoes());
+            ps.setBoolean(6, usuario.getMaioridade());
             int linhasCriadas = ps.executeUpdate();
             if (linhasCriadas > 0) {
                 return ResponseEntity.ok("SUCESSO");

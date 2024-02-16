@@ -19,10 +19,17 @@ const API = {
     }
   },
 
-  update: async (id, dadosNovos) => {
+  update: async (id, nome, email, genero, pais, observacoes, maioridade) => {
     try {
-      const response = await axios.put(`http://localhost:8080/API/EDIT${id}`, dadosNovos)
-      return response.data
+      const response = await axios.put(`http://localhost:8080/API/EDIT/${id}`, {
+        nome,
+        email,
+        genero,
+        pais,
+        observacoes,
+        maioridade
+      });
+      return response.data;
     } catch (error) {
       console.error("Erro ao editar usuário: " + error);
     }
