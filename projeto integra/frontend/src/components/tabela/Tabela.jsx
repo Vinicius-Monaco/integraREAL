@@ -40,7 +40,16 @@ const Tabela = (props) => {
     observacoes,
     maioridade
   ) => {
-    props.handleChildDataEdit(opt, id, nome, email, genero, pais, observacoes, maioridade);
+    props.handleChildDataEdit(
+      opt,
+      id,
+      nome,
+      email,
+      genero,
+      pais,
+      observacoes,
+      maioridade
+    );
   };
 
   return (
@@ -62,11 +71,14 @@ const Tabela = (props) => {
               return (
                 <Linha
                   id={usuario.id}
-                  nome={JSON.stringify(usuario.nome)}
-                  email={JSON.stringify(usuario.email)}
-                  genero={JSON.stringify(usuario.genero)}
-                  pais={JSON.stringify(usuario.pais)}
-                  observacoes={JSON.stringify(usuario.observacoes)}
+                  nome={JSON.stringify(usuario.nome).replace(/"/g, "")}
+                  email={JSON.stringify(usuario.email).replace(/"/g, "")}
+                  genero={JSON.stringify(usuario.genero).replace(/"/g, "")}
+                  pais={JSON.stringify(usuario.pais).replace(/"/g, "")}
+                  observacoes={JSON.stringify(usuario.observacoes).replace(
+                    /"/g,
+                    ""
+                  )}
                   maioridade={JSON.stringify(usuario.maioridade)}
                   bgColor={cor}
                   sendDataToParent={handleChildData}

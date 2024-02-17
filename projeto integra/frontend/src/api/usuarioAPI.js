@@ -33,6 +33,24 @@ const API = {
     } catch (error) {
       console.error("Erro ao editar usuário: " + error);
     }
+  },
+
+  create: async (nome, email, genero, pais, observacoes, maioridade) => {
+    try {
+      const response = await axios.post(
+"http://localhost:8080/API/CREATE", {
+          "nome": nome,
+          "email": email,
+          "genero": genero,
+          "pais": pais,
+          "observacoes": observacoes,
+          "maioridade": maioridade
+        }
+      )
+      console.log('acho que foi');
+    } catch (error) {
+      console.error('nao deu: ' + error);
+    }
   }
 
 }

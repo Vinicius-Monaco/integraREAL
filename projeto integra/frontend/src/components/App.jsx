@@ -3,6 +3,7 @@ import Tabela from "../components/tabela/Tabela.jsx";
 import DeletarModal from "./modals/delete/DeletarModal.jsx";
 import EditarModal from "./modals/edit/EditarModal.jsx";
 import { useState } from "react";
+import CriarModal from "./modals/create/CriarModal.jsx";
 
 const App = () => {
   const [modalConfirmaEdicao, setModalConfirmaEdicao] = useState(false);
@@ -41,7 +42,12 @@ const App = () => {
 
   return (
     <S.div>
-      <S.CreateButton title="INSERIR USUÁRIO">
+      <S.CreateButton
+        title="INSERIR USUÁRIO"
+        onClick={() => {
+          setModalConfirmaInsercao(true);
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -70,10 +76,12 @@ const App = () => {
           id={id}
           nome={nome}
           email={email}
+          genero={genero}
           observacoes={observacoes}
           sendDataToParent={handleChildDataEdit}
         />
       )}
+      {modalConfirmaInsercao && <CriarModal />}
     </S.div>
   );
 };

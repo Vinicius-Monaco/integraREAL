@@ -1,34 +1,28 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { S } from "./style";
 import API from "../../../api/usuarioAPI";
 
-const EditarModal = (props) => {
-  const inputPais = useRef(null);
+const CriarModal = () => {
   const inputNome = useRef(null);
   const inputEmail = useRef(null);
   const inputObservacoes = useRef(null);
-  const [generoNovo, setGeneroNovo] = useState("NÃO INFORMADO");
-  const [maioridadeNovo, setMaioridadeNovo] = useState(null);
-  // useEffect(() => {
-  // if (props.genero !== "") {
-  // setGeneroNovo(props.genero);
-  // }
-  // }, [props.genero]);
+  const inputPais = useRef(null);
+  const [maioridade, setMaioridade] = useState(null);
+  const [genero, setGenero] = useState("NÃO INFORMADO");
   return (
     <S.Shadow>
       <S.Box>
-        <h1>Editar Usuário</h1>
+        <h1>Inserir Usuário</h1>
         <S.Form
           onSubmit={(e) => {
             try {
-              API.update(
-                props.id,
+              API.create(
                 inputNome.current.value,
                 inputEmail.current.value,
-                generoNovo.replace(/"/g, ""),
+                genero.replace(/"/g, ""),
                 inputPais.current.value.replace(/"/g, ""),
                 inputObservacoes.current.value,
-                maioridadeNovo
+                maioridade
               );
             } catch (err) {
               console.log(err);
@@ -39,7 +33,7 @@ const EditarModal = (props) => {
             <label style={{ marginLeft: "5px" }}>Nome</label>
             <S.InputText
               type="text"
-              placeholder={props.nome}
+              placeholder={"Nome"}
               ref={inputNome}
               required
             />
@@ -48,7 +42,7 @@ const EditarModal = (props) => {
             <label style={{ marginLeft: "5px" }}>E-mail</label>
             <S.InputText
               type="text"
-              placeholder={props.email}
+              placeholder={"E-mail"}
               ref={inputEmail}
               required
             />
@@ -59,7 +53,7 @@ const EditarModal = (props) => {
                 type="radio"
                 name="radio"
                 onClick={() => {
-                  setGeneroNovo('"MASCULINO"');
+                  setGenero('"MASCULINO"');
                 }}
               />
               <label>Masculino</label>
@@ -69,7 +63,7 @@ const EditarModal = (props) => {
                 type="radio"
                 name="radio"
                 onClick={() => {
-                  setGeneroNovo('"FEMININO"');
+                  setGenero('"FEMININO"');
                 }}
               />
               <label>Feminino</label>
@@ -79,7 +73,7 @@ const EditarModal = (props) => {
                 type="radio"
                 name="radio"
                 onClick={() => {
-                  setGeneroNovo('"NÃO BINÁRIO"');
+                  setGenero('"NÃO BINÁRIO"');
                 }}
               />
               <label>Não binário</label>
@@ -90,7 +84,7 @@ const EditarModal = (props) => {
                 name="radio"
                 defaultChecked
                 onClick={() => {
-                  setGeneroNovo('"NÃO INFORMADO"');
+                  setGenero('"NÃO INFORMADO"');
                 }}
               />
               <label>Não informar</label>
@@ -101,7 +95,7 @@ const EditarModal = (props) => {
               <label>Observações</label>
               <S.TextArea
                 required
-                placeholder={props.observacoes}
+                placeholder={"Observações"}
                 ref={inputObservacoes}
               ></S.TextArea>
             </div>
@@ -149,9 +143,9 @@ const EditarModal = (props) => {
                 <label>Maior de idade </label>
                 <S.InputCheck
                   type="checkbox"
-                  checked={maioridadeNovo}
+                  checked={maioridade}
                   onChange={(e) => {
-                    setMaioridadeNovo(e.target.checked);
+                    setMaioridade(e.target.checked);
                   }}
                 />
               </div>
@@ -180,4 +174,4 @@ const EditarModal = (props) => {
   );
 };
 
-export default EditarModal;
+export default CriarModal;
