@@ -13,7 +13,7 @@ git clone git@github.com:Vinicius-Monaco/integraREAL.git
 
 1.Navegue até o repositório 'crud'.
 ```bash
-cd integraREAL/projeto \ integra/crudrest/crud
+cd integraREAL/'projeto integra'/crudrest/crud
 ```
 
 2. Execute a aplicação Spring via terminal.
@@ -25,7 +25,7 @@ mvn spring-boot:run
 
 1. Navegue até o repositório 'frontend'.
 ```bash
-cd integraREAL/projeto \ integra/frontend
+cd integraREAL/'projeto integra'/frontend
 ```
 
 2. Execute 'npm install' para instalar as dependências.
