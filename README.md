@@ -1,12 +1,14 @@
-Clone o repositório.
-```bash
-git clone git@github.com:Vinicius-Monaco/integraREAL.git
-```
-
 # PRÉ-REQUISITOS
 1. Node.js e npm instalados globalmente
 2. Java Development Kit (JDK)
 3. Maven
+
+   
+# CLONE O REPOSITÓRIO.
+```bash
+git clone git@github.com:Vinicius-Monaco/integraREAL.git
+```
+
 
 
 # EXECUÇÃO DO JAVA SPRING
