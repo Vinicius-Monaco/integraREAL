@@ -14,6 +14,7 @@ const App = () => {
   const [email, setEmail] = useState(null);
   const [genero, setGenero] = useState(null);
   const [pais, setPais] = useState(null);
+  const [maioridade, setMaioridade] = useState(null);
   const [observacoes, setObservacoes] = useState(null);
 
   const handleChildData = (opt, id) => {
@@ -28,7 +29,8 @@ const App = () => {
     email,
     genero,
     pais,
-    observacoes
+    observacoes,
+    maioridade
   ) => {
     setId(id);
     setNome(nome);
@@ -36,8 +38,8 @@ const App = () => {
     setGenero(genero);
     setPais(pais);
     setObservacoes(observacoes);
+    setMaioridade(maioridade);
     setModalConfirmaEdicao(opt);
-    console.log(id);
   };
 
   return (
@@ -78,6 +80,8 @@ const App = () => {
           email={email}
           genero={genero}
           observacoes={observacoes}
+          pais={pais}
+          maioridade={maioridade}
           sendDataToParent={handleChildDataEdit}
         />
       )}

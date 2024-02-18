@@ -1,6 +1,4 @@
 import { S } from "./style.js";
-import API from "../../../api/usuarioAPI.js";
-import { useState } from "react";
 
 const Linha = (props) => {
   const sendDataToParent = (opt, id) => {
@@ -27,7 +25,9 @@ const Linha = (props) => {
         <S.Td>{props.email}</S.Td>
         <S.Td>{props.genero}</S.Td>
         <S.Td>{props.pais}</S.Td>
-        <S.Td>{props.observacoes}</S.Td>
+        <S.Td>
+          {props.observacoes == "" ? "SEM OBSERVAÇÕES" : props.observacoes}
+        </S.Td>
         <S.Td>{props.maioridade ? "SIM" : "NÃO"}</S.Td>
         <S.Td align="center">
           <S.ButtonContainer>

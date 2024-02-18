@@ -5,14 +5,6 @@ import API from "../../api/usuarioAPI";
 
 const Tabela = (props) => {
   const [usuarios, setUsuarios] = useState(null);
-  const [modalConfirmaExclusao, setModalConfirmaExclusao] = useState(false);
-  const [id, setId] = useState(null);
-  const [nome, setNome] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [genero, setGenero] = useState(null);
-  const [pais, setPais] = useState(null);
-  const [observacoes, setObservacoes] = useState(null);
-  const [maioridade, setMaioridade] = useState(null);
 
   useEffect(() => {
     const getUsuarios = async () => {
@@ -67,19 +59,20 @@ const Tabela = (props) => {
         <tbody>
           {usuarios &&
             usuarios.map((usuario, index) => {
-              const cor = index % 2 === 0 ? "#b3b3b3" : "#e6e4e3";
+              const cor = index % 2 === 0 ? "#aaaaaa" : "#efefef";
               return (
                 <Linha
                   id={usuario.id}
-                  nome={JSON.stringify(usuario.nome).replace(/"/g, "")}
+                  nome={JSON.stringify(usuario.nome)
+                    .replace(/"/g, "")
+                    .toUpperCase()}
                   email={JSON.stringify(usuario.email).replace(/"/g, "")}
                   genero={JSON.stringify(usuario.genero).replace(/"/g, "")}
                   pais={JSON.stringify(usuario.pais).replace(/"/g, "")}
-                  observacoes={JSON.stringify(usuario.observacoes).replace(
-                    /"/g,
-                    ""
-                  )}
-                  maioridade={JSON.stringify(usuario.maioridade)}
+                  observacoes={JSON.stringify(usuario.observacoes)
+                    .replace(/"/g, "")
+                    .toUpperCase()}
+                  maioridade={usuario.maioridade}
                   bgColor={cor}
                   sendDataToParent={handleChildData}
                   sendDataToParentEdit={handleChildDataEdit}

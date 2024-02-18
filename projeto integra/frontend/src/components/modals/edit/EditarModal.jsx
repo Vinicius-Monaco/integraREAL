@@ -7,13 +7,8 @@ const EditarModal = (props) => {
   const inputNome = useRef(null);
   const inputEmail = useRef(null);
   const inputObservacoes = useRef(null);
-  const [generoNovo, setGeneroNovo] = useState("NÃO INFORMADO");
-  const [maioridadeNovo, setMaioridadeNovo] = useState(null);
-  // useEffect(() => {
-  // if (props.genero !== "") {
-  // setGeneroNovo(props.genero);
-  // }
-  // }, [props.genero]);
+  const [generoNovo, setGeneroNovo] = useState(props.genero);
+  const [maioridadeNovo, setMaioridadeNovo] = useState(props.maioridade);
   return (
     <S.Shadow>
       <S.Box>
@@ -40,6 +35,7 @@ const EditarModal = (props) => {
             <S.InputText
               type="text"
               placeholder={props.nome}
+              defaultValue={props.nome}
               ref={inputNome}
               required
             />
@@ -49,6 +45,7 @@ const EditarModal = (props) => {
             <S.InputText
               type="text"
               placeholder={props.email}
+              defaultValue={props.email}
               ref={inputEmail}
               required
             />
@@ -58,8 +55,9 @@ const EditarModal = (props) => {
               <S.InputRadio
                 type="radio"
                 name="radio"
+                defaultChecked={props.genero === "MASCULINO"}
                 onClick={() => {
-                  setGeneroNovo('"MASCULINO"');
+                  setGeneroNovo("MASCULINO");
                 }}
               />
               <label>Masculino</label>
@@ -68,8 +66,9 @@ const EditarModal = (props) => {
               <S.InputRadio
                 type="radio"
                 name="radio"
+                defaultChecked={props.genero === "FEMININO"}
                 onClick={() => {
-                  setGeneroNovo('"FEMININO"');
+                  setGeneroNovo("FEMININO");
                 }}
               />
               <label>Feminino</label>
@@ -78,8 +77,9 @@ const EditarModal = (props) => {
               <S.InputRadio
                 type="radio"
                 name="radio"
+                defaultChecked={props.genero === "NÃO BINÁRIO"}
                 onClick={() => {
-                  setGeneroNovo('"NÃO BINÁRIO"');
+                  setGeneroNovo("NÃO BINÁRIO");
                 }}
               />
               <label>Não binário</label>
@@ -88,9 +88,9 @@ const EditarModal = (props) => {
               <S.InputRadio
                 type="radio"
                 name="radio"
-                defaultChecked
+                defaultChecked={props.genero === "NÃO INFORMADO"}
                 onClick={() => {
-                  setGeneroNovo('"NÃO INFORMADO"');
+                  setGeneroNovo("NÃO INFORMADO");
                 }}
               />
               <label>Não informar</label>
@@ -100,8 +100,8 @@ const EditarModal = (props) => {
             <div style={{ width: "70%", height: "100%" }}>
               <label>Observações</label>
               <S.TextArea
-                required
                 placeholder={props.observacoes}
+                defaultValue={props.observacoes}
                 ref={inputObservacoes}
               ></S.TextArea>
             </div>
@@ -116,31 +116,87 @@ const EditarModal = (props) => {
               >
                 <label>PAÍS: </label>
                 <S.Select ref={inputPais}>
-                  <S.Option value={'"BRASIL"'}>BRASIL</S.Option>
+                  <S.Option
+                    value={"BRASIL"}
+                    selected={props.pais === "ARGENTINA"}
+                  >
+                    BRASIL
+                  </S.Option>
 
-                  <S.Option value={"ARGENTINA"}>ARGENTINA</S.Option>
+                  <S.Option
+                    value={"ARGENTINA"}
+                    selected={props.pais === "ARGENTINA"}
+                  >
+                    ARGENTINA
+                  </S.Option>
 
-                  <S.Option value={"URUGUAI"}>URUGUAI</S.Option>
+                  <S.Option
+                    value={"URUGUAI"}
+                    selected={props.pais === "URUGUAI"}
+                  >
+                    URUGUAI
+                  </S.Option>
 
-                  <S.Option value={"PARAGUAI"}>PARAGUAI</S.Option>
+                  <S.Option
+                    value={"PARAGUAI"}
+                    selected={props.pais === "PARAGUAI"}
+                  >
+                    PARAGUAI
+                  </S.Option>
 
-                  <S.Option value={"CHILE"}>CHILE</S.Option>
+                  <S.Option value={"CHILE"} selected={props.pais === "CHILE"}>
+                    CHILE
+                  </S.Option>
 
-                  <S.Option value={"BOLIVIA"}>BOLIVIA</S.Option>
+                  <S.Option
+                    value={"BOLIVIA"}
+                    selected={props.pais === "BOLIVIA"}
+                  >
+                    BOLIVIA
+                  </S.Option>
 
-                  <S.Option value={"EQUADOR"}>EQUADOR</S.Option>
+                  <S.Option
+                    value={"EQUADOR"}
+                    selected={props.pais === "EQUADOR"}
+                  >
+                    EQUADOR
+                  </S.Option>
 
-                  <S.Option value={"COLOMBIA"}>COLOMBIA</S.Option>
+                  <S.Option
+                    value={"COLOMBIA"}
+                    selected={props.pais === "COLOMBIA"}
+                  >
+                    COLOMBIA
+                  </S.Option>
 
-                  <S.Option value={"VENEZUELA"}>VENEZUELA</S.Option>
+                  <S.Option
+                    value={"VENEZUELA"}
+                    selected={props.pais === "VENEZUELA"}
+                  >
+                    VENEZUELA
+                  </S.Option>
 
-                  <S.Option value={"PERU"}>PERU</S.Option>
+                  <S.Option value={"PERU"} selected={props.pais === "PERU"}>
+                    PERU
+                  </S.Option>
 
-                  <S.Option value={"GUIANA"}>GUIANA</S.Option>
+                  <S.Option value={"GUIANA"} selected={props.pais === "GUIANA"}>
+                    GUIANA
+                  </S.Option>
 
-                  <S.Option value={"SURINAME"}>SURINAME</S.Option>
+                  <S.Option
+                    value={"SURINAME"}
+                    selected={props.pais === "SURINAME"}
+                  >
+                    SURINAME
+                  </S.Option>
 
-                  <S.Option value={"GUIANA_FRANCESA"}>GUIANA_FRANCESA</S.Option>
+                  <S.Option
+                    value={"GUIANA FRANCESA"}
+                    selected={props.pais === "GUIANA FRANCESA"}
+                  >
+                    GUIANA FRANCESA
+                  </S.Option>
                 </S.Select>
               </div>
               <div

@@ -5,7 +5,7 @@ import API from "../../../api/usuarioAPI";
 const CriarModal = () => {
   const inputNome = useRef(null);
   const inputEmail = useRef(null);
-  const inputObservacoes = useRef(null);
+  const inputObservacoes = useRef("");
   const inputPais = useRef(null);
   const [maioridade, setMaioridade] = useState(null);
   const [genero, setGenero] = useState("NÃO INFORMADO");
@@ -31,21 +31,11 @@ const CriarModal = () => {
         >
           <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
             <label style={{ marginLeft: "5px" }}>Nome</label>
-            <S.InputText
-              type="text"
-              placeholder={"Nome"}
-              ref={inputNome}
-              required
-            />
+            <S.InputText type="text" ref={inputNome} required />
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
             <label style={{ marginLeft: "5px" }}>E-mail</label>
-            <S.InputText
-              type="text"
-              placeholder={"E-mail"}
-              ref={inputEmail}
-              required
-            />
+            <S.InputText type="text" ref={inputEmail} required />
           </div>
           <S.InputRadioArea>
             <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
@@ -53,7 +43,7 @@ const CriarModal = () => {
                 type="radio"
                 name="radio"
                 onClick={() => {
-                  setGenero('"MASCULINO"');
+                  setGenero("MASCULINO");
                 }}
               />
               <label>Masculino</label>
@@ -63,7 +53,7 @@ const CriarModal = () => {
                 type="radio"
                 name="radio"
                 onClick={() => {
-                  setGenero('"FEMININO"');
+                  setGenero("FEMININO");
                 }}
               />
               <label>Feminino</label>
@@ -73,7 +63,7 @@ const CriarModal = () => {
                 type="radio"
                 name="radio"
                 onClick={() => {
-                  setGenero('"NÃO BINÁRIO"');
+                  setGenero("NÃO BINÁRIO");
                 }}
               />
               <label>Não binário</label>
@@ -84,7 +74,7 @@ const CriarModal = () => {
                 name="radio"
                 defaultChecked
                 onClick={() => {
-                  setGenero('"NÃO INFORMADO"');
+                  setGenero("NÃO INFORMADO");
                 }}
               />
               <label>Não informar</label>
@@ -93,11 +83,7 @@ const CriarModal = () => {
           <S.Flex>
             <div style={{ width: "70%", height: "100%" }}>
               <label>Observações</label>
-              <S.TextArea
-                required
-                placeholder={"Observações"}
-                ref={inputObservacoes}
-              ></S.TextArea>
+              <S.TextArea ref={inputObservacoes}></S.TextArea>
             </div>
             <S.DivRight>
               <div
@@ -110,7 +96,7 @@ const CriarModal = () => {
               >
                 <label>PAÍS: </label>
                 <S.Select ref={inputPais}>
-                  <S.Option value={'"BRASIL"'}>BRASIL</S.Option>
+                  <S.Option value={"BRASIL"}>BRASIL</S.Option>
 
                   <S.Option value={"ARGENTINA"}>ARGENTINA</S.Option>
 
@@ -134,7 +120,7 @@ const CriarModal = () => {
 
                   <S.Option value={"SURINAME"}>SURINAME</S.Option>
 
-                  <S.Option value={"GUIANA_FRANCESA"}>GUIANA_FRANCESA</S.Option>
+                  <S.Option value={"GUIANA FRANCESA"}>GUIANA FRANCESA</S.Option>
                 </S.Select>
               </div>
               <div
