@@ -25,14 +25,13 @@ const S = {
         border-radius: 6px;
         transition: .3s;
         &:hover {
-            border-color: ${props => props.bgColor};
+            border-color: ${props => props.bgcolor};
             background-color: white;
-            color: ${props => props.bgColor}
+            color: ${props => props.bgcolor}
         }
     `,
     
     PopUpExclusao: styled.div`
-        background-color: red;
         width: 100px;
         height: 100px;
     `

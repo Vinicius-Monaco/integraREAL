@@ -33,7 +33,7 @@ const Linha = (props) => {
           <S.ButtonContainer>
             <S.Button
               bgcolor="rgba(255, 229, 31, 0.8)"
-              title="Editar"
+              title="EDITAR USUÁRIO"
               onClick={() => sendDataToParentEdit(true)}
             >
               <svg
@@ -47,7 +47,7 @@ const Linha = (props) => {
             </S.Button>
             <S.Button
               bgcolor="rgba(255, 57, 43, 0.8)"
-              title="Excluir"
+              title="EXCLUIR USUÁRIO"
               onClick={() => sendDataToParent(true, props.id)}
             >
               <svg
