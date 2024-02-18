@@ -6,7 +6,7 @@
    
 # CLONE O REPOSITÓRIO.
 ```bash
-git clone git@github.com:Vinicius-Monaco/integraREAL.git
+git clone https://github.com/Vinicius-Monaco/integraREAL.git
 ```
 
 
