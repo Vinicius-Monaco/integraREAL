@@ -23,7 +23,7 @@ mvn spring-boot:run
 
 # EXECUÇÃO DO REACTJS
 
-1. Navegue até o repositório 'frontend'.
+1. Volte até o diretório raiz do projeto e navegue até o repositório 'frontend'.
 ```bash
 cd integraREAL/'projeto integra'/frontend
 ```
