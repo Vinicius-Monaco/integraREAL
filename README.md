@@ -23,6 +23,14 @@ cd integraREAL/'projeto integra'/crudrest/crud
 mvn spring-boot:run
 ```
 
+3. A aplicação será rodada na porta 8080.
+4. O endpoint para acessar o banco de dados h2 é: 'http://localhost:8080/h2-console', o usuário é: 'admin' e a senha é: '123'.
+5. O endpoint para acessar o método CREATE é: 'http://localhost:8080/API/CREATE'.
+6. O endpoint para acessar o método READ é: 'http://localhost:8080/API/USERS'.
+7. O endpoint para acessar o método UPDATE é: 'http://localhost:8080/API/EDIT/{id}'.
+8. O endpoint para acessar o método DELETE é: 'http://localhost:8080/API/DELETE/{id}'.
+
+
 # EXECUÇÃO DO REACTJS
 
 1. Volte até o diretório raiz do projeto e navegue até o repositório 'frontend'.
@@ -38,4 +46,6 @@ npm install
 3. Execute a aplicação ReactJS.
 ```bash
 npm start
-```   
+```
+
+4. A aplicação será rodada na porta 3000 (http://localhost:3000)
