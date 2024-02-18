@@ -10,7 +10,7 @@ const S = {
         position: fixed;
         right: 0;
         bottom: 0;
-        margin: 60px;
+        margin: 40px;
         width: 80px;
         height: 80px;
         background-color: green;
