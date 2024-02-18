@@ -52,8 +52,8 @@ const Tabela = (props) => {
           <S.Th>E-mail</S.Th>
           <S.Th>Gênero</S.Th>
           <S.Th>País</S.Th>
-          <S.Th>Observações</S.Th>
           <S.Th>Maioridade</S.Th>
+          <S.Th>Observações</S.Th>
           <S.Th>Ações</S.Th>
         </S.Thead>
         <tbody>
@@ -73,7 +73,7 @@ const Tabela = (props) => {
                     .replace(/"/g, "")
                     .toUpperCase()}
                   maioridade={usuario.maioridade}
-                  bgColor={cor}
+                  bgcolor={cor}
                   sendDataToParent={handleChildData}
                   sendDataToParentEdit={handleChildDataEdit}
                 />

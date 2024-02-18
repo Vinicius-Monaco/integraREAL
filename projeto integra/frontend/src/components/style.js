@@ -7,7 +7,7 @@ const S = {
     `,
 
     CreateButton: styled.button`
-        position: absolute;
+        position: fixed;
         right: 0;
         bottom: 0;
         margin: 60px;
