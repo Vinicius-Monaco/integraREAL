@@ -2,7 +2,7 @@ import { S } from "./style.js";
 import Tabela from "../components/tabela/Tabela.jsx";
 import DeletarModal from "./modals/delete/DeletarModal.jsx";
 import EditarModal from "./modals/edit/EditarModal.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CriarModal from "./modals/create/CriarModal.jsx";
 
 const App = () => {
@@ -42,6 +42,14 @@ const App = () => {
     setModalConfirmaEdicao(opt);
   };
 
+  useEffect(() => {
+    if (modalConfirmaExclusao || modalConfirmaEdicao || modalConfirmaInsercao) {
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    } else {
+      document.getElementsByTagName("body")[0].style.overflow = "visible";
+    }
+  }, [modalConfirmaExclusao, modalConfirmaEdicao, modalConfirmaInsercao]);
+
   return (
     <S.div>
       <S.CreateButton
@@ -60,7 +68,7 @@ const App = () => {
           <path d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
         </svg>
       </S.CreateButton>
-      <h1 style={{ fontSize: "30px", letterSpacing: "1px" }}>
+      <h1 style={{ fontSize: "30px", letterSpacing: "1px", marginTop: "50px" }}>
         Sistema de usuários
       </h1>
       <Tabela
