@@ -37,8 +37,8 @@ const API = {
 
   create: async (nome, email, genero, pais, observacoes, maioridade) => {
     try {
-      const response = await axios.post(
-"http://localhost:8080/API/CREATE", {
+      await axios.post(
+          "http://localhost:8080/API/CREATE", {
           "nome": nome,
           "email": email,
           "genero": genero,

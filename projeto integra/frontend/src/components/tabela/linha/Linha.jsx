@@ -27,7 +27,7 @@ const Linha = (props) => {
         <S.Td>{props.pais}</S.Td>
         <S.Td>{props.maioridade ? "SIM" : "NÃO"}</S.Td>
         <S.Td>
-          {props.observacoes == "" ? "SEM OBSERVAÇÕES" : props.observacoes}
+          {props.observacoes === "" ? "SEM OBSERVAÇÕES" : props.observacoes}
         </S.Td>
         <S.Td align="center">
           <S.ButtonContainer>
